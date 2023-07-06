@@ -13,6 +13,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/reflection"
 )
 
 func init() {
@@ -35,6 +36,7 @@ func NewServer(logger log.Logger, options option.V2RayAPIOptions) (adapter.V2Ray
 	if statsService != nil {
 		RegisterStatsServiceServer(grpcServer, statsService)
 	}
+	reflection.Register(grpcServer)
 	server := &Server{
 		logger:       logger,
 		listen:       options.Listen,
