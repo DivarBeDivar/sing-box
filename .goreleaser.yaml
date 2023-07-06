@@ -19,6 +19,7 @@ builds:
       - with_utls
       - with_reality_server
       - with_clash_api
+      - with_v2ray_api
     env:
       - CGO_ENABLED=0
     targets:
